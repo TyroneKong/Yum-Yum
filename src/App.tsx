@@ -10,7 +10,8 @@ export interface greetingProps {
   setName:(value:string | ((prevName:string)=> string))=>void;
   greet:string;
   setGreet:(value:string | ((prevGreet:string)=> string))=>void;
-  
+  input:string;
+  setInput:(value:string| ((prevInput:string)=> string))=>void
   } 
 
 
@@ -24,7 +25,7 @@ export interface greetingProps {
 const App: FC =()=> {
 const [name, setName] = useState<string>("")
 const [greet, setGreet] = useState<string>("")
-
+const [input, setInput] = useState<string>("")
 
 
 // state object with interface to define types
@@ -32,7 +33,9 @@ const value: greetingProps ={
   name,
   setName,
   greet,
-  setGreet
+  setGreet,
+  setInput,
+  input
   
   }
 

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, {FC, useRef, useContext} from 'react';
 
 import { GreetContext } from '../App';
@@ -17,11 +18,24 @@ const value = useContext(GreetContext)
 
 
 
+
+const getRecipeList= async ()=>{
+    try {
+        const {data} = await axios.get(`http://localhost:8080/recipeList/${value?.input}`)
+        console.log(data)
+    } catch (error) {
+        
+    }
+}
+
+
+
+
  
 const greetMe=(e:React.FormEvent<HTMLFormElement>)=>{
 e.preventDefault()
 
-    value?.setGreet(` ${value.name} how are you today?`)
+getRecipeList()
  
         formRef.current?.reset()
     
@@ -32,7 +46,7 @@ e.preventDefault()
 
 const handleInput=(e:React.FormEvent<HTMLInputElement>)=>{
 
-value?.setName(e.currentTarget.value)
+value?.setInput(e.currentTarget.value)
 
 
 }
@@ -42,12 +56,11 @@ value?.setName(e.currentTarget.value)
     <div>
         <h1>Tasty</h1>
  <form ref={formRef}onSubmit={greetMe}>
- <input  onChange={handleInput}></input>
+ <input  onChange={handleInput} required></input>
 
 
 <button type='submit'>Greet me!</button>
  </form>
-{value?.greet}
     </div>
   );
 }
