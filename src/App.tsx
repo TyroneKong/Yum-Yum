@@ -1,25 +1,55 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {FC, useState, createContext} from 'react';
 import './App.css';
+import { Greeting } from './components/greeting';
 
-function App() {
+
+
+export interface greetingProps {
+
+  name:string;
+  setName:(value:string | ((prevName:string)=> string))=>void;
+  greet:string;
+  setGreet:(value:string | ((prevGreet:string)=> string))=>void;
+  
+  } 
+
+
+  export const GreetContext = createContext<greetingProps|null>(null)
+
+
+
+  
+  
+
+const App: FC =()=> {
+const [name, setName] = useState<string>("")
+const [greet, setGreet] = useState<string>("")
+
+
+
+// state object with interface to define types
+const value: greetingProps ={
+  name,
+  setName,
+  greet,
+  setGreet
+  
+  }
+
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  // passing state object to context 
+  <GreetContext.Provider value={value}>
+
+<div className="App">
+ <Greeting />
     </div>
+
+
+
+    </GreetContext.Provider>
+
   );
 }
 
