@@ -1,0 +1,9 @@
+.card {
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.75) 0rem 0.3125rem 0.9375rem;
+
+  &__img {
+    width: 250px;
+    height: 200px;
+  }
+}

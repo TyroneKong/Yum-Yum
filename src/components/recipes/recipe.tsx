@@ -1,9 +1,9 @@
 import axios from 'axios';
-import React, {FC, useRef, useContext, useEffect, useState} from 'react';
-
-import { GreetContext } from '../App';
-
-
+import React, {FC, useRef, useContext, useState} from 'react';
+import { Button } from '@mui/material';
+import { GreetContext } from '../../App';
+import { RecipeList } from './recipeList';
+import './recipe.scss'
 
 
 
@@ -15,7 +15,7 @@ export const Recipe:FC =()=> {
 // using the context 
 
 const value = useContext(GreetContext)
-const [recipeName, setRecipeName] = useState<string>("")
+const [recipeData, setRecipeData] = useState<string |null>(null)
 
 
 
@@ -23,9 +23,9 @@ const getRecipeList= async ()=>{
     try {
         const {data} = await axios.get(`http://localhost:8080/recipeList/${value?.input}`)
         console.log(data.results)
-        setRecipeName(data.results[1].name)
+        setRecipeData(data.results)
     } catch (error) {
-        
+        console.log(error)
     }
 }
 
@@ -34,10 +34,11 @@ e.preventDefault()
 
 getRecipeList()
  
-        formRef.current?.reset()
+formRef.current?.reset()
     
    
 }
+
 
 
 
@@ -49,16 +50,20 @@ value?.setInput(e.currentTarget.value)
 }
 
 
+
+
+
+
     return (
     <div>
         <h1>Yum Yum</h1>
  <form ref={formRef}onSubmit={fetchData}>
- <input  onChange={handleInput} required></input>
+ <input className='input'  onChange={handleInput} required></input>
 
 
-<button type='submit'>Find Recipe!</button>
+<Button variant='contained' type='submit'>Find Recipe</Button>
  </form>
- {recipeName}
+ <RecipeList recipedata={recipeData}  /> 
     </div>
   );
 }

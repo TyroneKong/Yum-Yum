@@ -1,6 +1,6 @@
 import React, {FC, useState, createContext} from 'react';
 import './App.css';
-import { Recipe } from './components/recipe';
+import {Recipe} from './components/recipes/recipe'
 
 
 
