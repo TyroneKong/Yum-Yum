@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
+require("dotenv").config;
 
 router.get("/recipeList/:input", async (req, res) => {
   const options = {
@@ -13,7 +14,7 @@ router.get("/recipeList/:input", async (req, res) => {
       q: req.params.input,
     },
     headers: {
-      "X-RapidAPI-Key": "2130c8f6c7msh1f292e2b2420a0ep1b215fjsn556d765ad938",
+      "X-RapidAPI-Key": process.env.APIKEY,
       "X-RapidAPI-Host": "tasty.p.rapidapi.com",
     },
   };

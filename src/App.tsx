@@ -1,6 +1,6 @@
 import React, {FC, useState, createContext} from 'react';
 import './App.css';
-import { Greeting } from './components/greeting';
+import { Recipe } from './components/recipe';
 
 
 
@@ -46,7 +46,7 @@ const value: greetingProps ={
   <GreetContext.Provider value={value}>
 
 <div className="App">
- <Greeting />
+ <Recipe />
     </div>
 
 
