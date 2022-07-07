@@ -1,14 +1,15 @@
 import React, { FC, useState, createContext } from "react";
 import "./App.css";
 import { Recipe } from "./components/recipes/recipe";
+import Shopping from "./components/shoppingList/shopping"
 
 export interface greetingProps {
   name: string;
-  setName: (value: string | ((prevName: string) => string)) => void;
+  setName: React.Dispatch<React.SetStateAction<string>>
   greet: string;
-  setGreet: (value: string | ((prevGreet: string) => string)) => void;
+  setGreet: React.Dispatch<React.SetStateAction<string>>
   input: string;
-  setInput: (value: string | ((prevInput: string) => string)) => void;
+  setInput: React.Dispatch<React.SetStateAction<string>>
 }
 
 export const GreetContext = createContext<greetingProps | null>(null);
@@ -33,6 +34,7 @@ const App: FC = () => {
     <GreetContext.Provider value={value}>
       <div className="App">
         <Recipe />
+        <Shopping/>
       </div>
     </GreetContext.Provider>
   );

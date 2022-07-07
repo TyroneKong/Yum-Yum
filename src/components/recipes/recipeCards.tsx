@@ -3,7 +3,7 @@ import './recipeCards.scss'
 
 
 export interface cardProps {
-data:any
+data:string
 
 }
 
