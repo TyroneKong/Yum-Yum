@@ -3,6 +3,7 @@ import { Button } from "@mui/material";
 import './shopping.scss'
 import {List} from './listInterface'
 import ShoppingList from './shoppingList'
+import {v4 as uuidv4} from 'uuid'
 
 const Shopping:FC = () => {
 const [list, setList] = useState<string>("")

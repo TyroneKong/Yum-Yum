@@ -38,3 +38,15 @@
     transform: rotate(360deg);
   }
 }
+
+
+.lightTheme{
+  color: black;
+  background-color: #FFFFFF;
+}
+
+
+.darkTheme{
+  color: white;
+  background-color: #222222;
+}

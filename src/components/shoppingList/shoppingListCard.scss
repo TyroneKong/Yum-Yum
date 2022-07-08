@@ -1,7 +1,7 @@
 .shoppingListCard {
   display: flex;
   justify-content: space-around;
-  min-width: 200px;
+  max-width: 200px;
   height: 200px;
   background: url("../images/ClipartKey_456644.png");
   background-size: cover;
@@ -9,11 +9,18 @@
 
 .icon {
   cursor: pointer;
+  color: black;
+}
+
+.icon:hover {
+  font-size: 20px;
 }
 
 .name {
   font-size: 25px;
+  color: black;
   &__container {
+    width: 50px;
     margin: 50px 10px 10px 50px;
     display: flex;
   }
@@ -21,4 +28,8 @@
 
 .icons-container {
   margin-right: 20px;
+}
+
+.listInput {
+  height: 20px;
 }

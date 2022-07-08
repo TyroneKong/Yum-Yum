@@ -13,7 +13,6 @@ interface Props {
 
 
 const ShoppingList:FC<Props> = ({lists, setLists, setIsDone}) => {
-  console.log(lists)
   return <div className="shoppingList">
 {lists.map((list:any, index:number)=>{
 return (

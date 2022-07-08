@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 import { GreetContext } from "../../App";
 import { RecipeList } from "./recipeList";
 import "./recipe.scss";
-import SelectInput from "@mui/material/Select/SelectInput";
+
 
 // passing in the greetingprops using the interface
 export const Recipe: FC = () => {
@@ -14,6 +14,7 @@ export const Recipe: FC = () => {
 
   const value = useContext(GreetContext);
   const [recipeData, setRecipeData] = useState<string | null>(null);
+
 
   const getRecipeList = async () => {
     try {
@@ -43,6 +44,7 @@ export const Recipe: FC = () => {
   return (
     <div>
       <h1>Yum Yum</h1>
+     
       <form ref={formRef} onSubmit={fetchData}>
         <input className="input" placeholder="search for recipe,,," onChange={(e)=>{value?.setInput(e.currentTarget.value)}} required></input>
 
