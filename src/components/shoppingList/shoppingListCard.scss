@@ -1,0 +1,24 @@
+.shoppingListCard {
+  display: flex;
+  justify-content: space-around;
+  min-width: 200px;
+  height: 200px;
+  background: url("../images/ClipartKey_456644.png");
+  background-size: cover;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.name {
+  font-size: 25px;
+  &__container {
+    margin: 50px 10px 10px 50px;
+    display: flex;
+  }
+}
+
+.icons-container {
+  margin-right: 20px;
+}

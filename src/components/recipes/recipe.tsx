@@ -4,6 +4,7 @@ import { Button } from "@mui/material";
 import { GreetContext } from "../../App";
 import { RecipeList } from "./recipeList";
 import "./recipe.scss";
+import SelectInput from "@mui/material/Select/SelectInput";
 
 // passing in the greetingprops using the interface
 export const Recipe: FC = () => {
@@ -37,15 +38,13 @@ export const Recipe: FC = () => {
     formRef.current?.reset();
   };
 
-  const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
-    value?.setInput(e.currentTarget.value);
-  };
+
 
   return (
     <div>
       <h1>Yum Yum</h1>
       <form ref={formRef} onSubmit={fetchData}>
-        <input className="input" onChange={handleInput} required></input>
+        <input className="input" placeholder="search for recipe,,," onChange={(e)=>{value?.setInput(e.currentTarget.value)}} required></input>
 
         <Button variant="contained" type="submit">
           Find Recipe

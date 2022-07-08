@@ -4,3 +4,7 @@ input {
   height: 50px;
   position: relative;
 }
+
+input::placeholder {
+  font-size: 20px;
+}
