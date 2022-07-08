@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./shoppingListCard.scss";
 import { List } from "./listInterface";
-import { AiFillDelete } from "react-icons/ai";
+import { RiDeleteBin6Line } from "react-icons/ri";
 import { AiFillEdit } from "react-icons/ai";
 import { MdDone } from "react-icons/md";
 
@@ -73,11 +73,11 @@ const ShoppingListCard: React.FC<Props> = ({ lists, name, id, setLists }) => {
 
       <div className="icons-container">
         <span onClick={() => deleteList(id)} className="icon">
-          <AiFillDelete />
+        <RiDeleteBin6Line/>
         </span>
 
         <span onClick={editList} className="icon">
-          {" "}
+         
           <AiFillEdit />
         </span>
 
