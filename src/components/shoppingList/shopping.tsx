@@ -44,7 +44,7 @@ return (
 <h2> You have {lists.length ===0 || lists.length >1?lists.length + ' items':lists.length + ' item'}</h2>
     <form ref={inputRef}  onSubmit={handleSubmit}>
 
-      <input  type="input" placeholder="add to shopping list..." onChange={(e)=>{setInput(e.currentTarget.value)}}>
+      <input  type="input" placeholder="add to shopping list..." onChange={(e)=>{setInput(e.currentTarget.value)}} required>
       </input>
       <Button className="button"  type="submit" variant="contained">Add to list</Button>
     </form>

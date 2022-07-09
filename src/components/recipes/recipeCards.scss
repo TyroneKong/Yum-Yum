@@ -1,3 +1,5 @@
+@use "../styles/partials/mixins" as *;
+
 .card {
   display: flex;
   box-shadow: rgba(0, 0, 0, 0.75) 0rem 0.3125rem 0.9375rem;
@@ -5,6 +7,12 @@
   &__name {
     width: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @include responsive(mobile) {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }

@@ -16,7 +16,7 @@ interface Props {
 
 const ShoppingListCard: React.FC<Props> = ({ lists, name, id, setLists }) => {
   const [edit, setEdit] = useState(false);
-  const [alterList, setalterList] = useState<string>(name);
+  const [userInput, setUserInput] = useState<string>(name);
   const [done, setDone] = useState(false);
   const inputRef = useRef <HTMLInputElement> (null);
 
@@ -42,7 +42,7 @@ const ShoppingListCard: React.FC<Props> = ({ lists, name, id, setLists }) => {
     inputRef.current?.focus()
     setLists(
       lists.map((list) =>
-        list.id === id ? { ...list, list: alterList } : list
+        list.id === id ? { ...list, list: userInput } : list
       )
     );
     setEdit(false);
@@ -55,10 +55,10 @@ const ShoppingListCard: React.FC<Props> = ({ lists, name, id, setLists }) => {
         {edit ? (
           <input
             className="listInput"
-            value={alterList}
+            value={userInput}
             ref={inputRef}
             onChange={(e) => {
-              setalterList(e.currentTarget.value);
+              setUserInput(e.currentTarget.value);
             }}
           />
         ) : done ? (
