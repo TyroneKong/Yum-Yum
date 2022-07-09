@@ -1,12 +1,11 @@
-import React, {FC, FormEvent, useState, useRef, useEffect} from "react";
+import React, {FC, useState, useRef, useEffect} from "react";
 import { Button } from "@mui/material";
 import './shopping.scss'
 import {List} from './listInterface'
 import ShoppingList from './shoppingList'
-import {v4 as uuidv4} from 'uuid'
 
 const Shopping:FC = () => {
-const [list, setList] = useState<string>("")
+const [input, setInput] = useState<string>("")
 const [lists, setLists] = useState<List[]>([])
 const [isDone, setIsDone] = useState<boolean>(false)
 
@@ -18,11 +17,20 @@ const inputRef= useRef<HTMLFormElement>(null)
 const handleSubmit=(e:React.FormEvent)=>{
 e.preventDefault()
 
-if(list){
-  setLists([...lists, {id:Date.now(),list:list, isDone:isDone}])
+if(input){
+  const item = lists.map(list => list.list)
+  // check if item already exists
+if(!item.includes(input)){
+  setLists([...lists, {id:Date.now(),list:input, isDone:isDone}])
+
+} else{
+  alert('item axists')
 }
+
+  
 inputRef.current?.reset()
 
+}
 }
 
 useEffect(()=>{
@@ -33,13 +41,14 @@ useEffect(()=>{
 return ( 
 <div>
 <h2>Shopping List</h2>
+<h2> You have {lists.length ===0 || lists.length >1?lists.length + ' items':lists.length + ' item'}</h2>
     <form ref={inputRef}  onSubmit={handleSubmit}>
 
-      <input  type="input" placeholder="add to shopping list..." onChange={(e)=>{setList(e.currentTarget.value)}}>
+      <input  type="input" placeholder="add to shopping list..." onChange={(e)=>{setInput(e.currentTarget.value)}}>
       </input>
       <Button className="button"  type="submit" variant="contained">Add to list</Button>
     </form>
-<ShoppingList lists={lists} setLists={setLists} setIsDone={setIsDone}/>
+<ShoppingList lists={lists} setLists={setLists} />
   </div>
 
 ) 

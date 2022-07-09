@@ -10,16 +10,15 @@ interface Props {
   name: string;
   list: List[];
   id: number;
-  setLists: any;
-  isDone: boolean;
-  setIsDone: any;
+  setLists: any
+
 }
 
 const ShoppingListCard: React.FC<Props> = ({ lists, name, id, setLists }) => {
   const [edit, setEdit] = useState(false);
   const [alterList, setalterList] = useState<string>(name);
   const [done, setDone] = useState(false);
-  const inputRef = useRef(null);
+  const inputRef = useRef <HTMLInputElement> (null);
 
   const deleteList = (id: number) => {
     const newList = lists.filter((list: any) => list.id !== id);
@@ -40,7 +39,7 @@ const ShoppingListCard: React.FC<Props> = ({ lists, name, id, setLists }) => {
   //edit note
   const handleEdit = (e: React.FormEvent<HTMLFormElement>, id: number) => {
     e.preventDefault();
-
+    inputRef.current?.focus()
     setLists(
       lists.map((list) =>
         list.id === id ? { ...list, list: alterList } : list
@@ -51,11 +50,13 @@ const ShoppingListCard: React.FC<Props> = ({ lists, name, id, setLists }) => {
 
   return (
     <div className="shoppingListCard">
-      <form onSubmit={(e) => handleEdit(e, id)} ref={inputRef} className="form">
+   
+      <form onSubmit={(e) => handleEdit(e, id)}  className="form">
         {edit ? (
           <input
             className="listInput"
             value={alterList}
+            ref={inputRef}
             onChange={(e) => {
               setalterList(e.currentTarget.value);
             }}
