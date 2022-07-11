@@ -6,7 +6,7 @@ import { AiFillEdit } from "react-icons/ai";
 import { MdDone } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../index";
-import { deletelist, setlists } from "../Redux/shoppingList";
+import { deletelist, setlists, increaseQuantity } from "../Redux/shoppingList";
 
 interface Props {
   lists: List[];
