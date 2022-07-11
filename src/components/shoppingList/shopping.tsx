@@ -3,11 +3,6 @@ import { Button } from "@mui/material";
 import "./shopping.scss";
 import ShoppingList from "./shoppingList";
 import { useDispatch, useSelector } from "react-redux";
-import {
-
-  decremented,
-  incrementedByAmount,
-} from "../Redux/quantity";
 import { setlists, increaseQuantity, decreaseQuantity} from "../Redux/shoppingList";
 import { RootState } from "../../index";
 
@@ -23,17 +18,11 @@ const Shopping: FC = () => {
   );
  
 
-  // type AppDispatch = typeof store.dispatch
-
-  // const useAppDispatch:()=> AppDispatch = useDispatch
-  // const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
   const dispatch = useDispatch();
 
   const item = listArr.map((list: any) => list.list);
-  console.log(listArr)
-
-
+ 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
