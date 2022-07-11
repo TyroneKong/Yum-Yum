@@ -21,18 +21,14 @@ const ShoppingListCard: React.FC<Props> = ({ lists, name, id }) => {
   const [userInput, setUserInput] = useState<string>(name);
   const [done, setDone] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  
 
   const dispatch = useDispatch();
-
 
   // shoppinglist state
   const listArr: any = useSelector<RootState>(
     (state) => state.shopping.shoppinglist
   );
 
-
-  
   const setToDone = () => {
     !done ? setDone(true) : setDone(false);
     console.log("done");
@@ -46,7 +42,7 @@ const ShoppingListCard: React.FC<Props> = ({ lists, name, id }) => {
     inputRef.current?.focus();
     dispatch(
       setlists(
-    listArr.map((list: any) =>
+        listArr.map((list: any) =>
           list.id === id ? { ...list, list: userInput } : list
         )
       )
@@ -82,7 +78,7 @@ const ShoppingListCard: React.FC<Props> = ({ lists, name, id }) => {
           <RiDeleteBin6Line />
         </span>
 
-        <span onClick={()=>setEdit(true)} className="icon">
+        <span onClick={() => setEdit(true)} className="icon">
           <AiFillEdit />
         </span>
 

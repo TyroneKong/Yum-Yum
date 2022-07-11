@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
-const initialStateValue:any  = 0
+const initialStateValue:any  = []
 
 
 // create the slice 

@@ -6,8 +6,6 @@ import Switch from "react-switch";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RecipePage from "./components/pages/RecipePage.jsx";
 
-
-
 export interface greetingProps {
   name: string;
   setName: React.Dispatch<React.SetStateAction<string>>;
@@ -18,11 +16,6 @@ export interface greetingProps {
 }
 
 export const GreetContext = createContext<greetingProps | null>(null);
-
-
-
-
-
 
 const App: FC = () => {
   const [name, setName] = useState<string>("");
@@ -43,7 +36,6 @@ const App: FC = () => {
   return (
     // passing state object to context
     <GreetContext.Provider value={value}>
-    
       <div className="App">
         <div className={theme}>
           <Switch
@@ -65,10 +57,6 @@ const App: FC = () => {
           <Shopping />
         </div>
       </div>
-
-
-
-     
     </GreetContext.Provider>
   );
 };

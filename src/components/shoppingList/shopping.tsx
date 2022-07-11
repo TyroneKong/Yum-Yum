@@ -3,7 +3,11 @@ import { Button } from "@mui/material";
 import "./shopping.scss";
 import ShoppingList from "./shoppingList";
 import { useDispatch, useSelector } from "react-redux";
-import { setlists, increaseQuantity, decreaseQuantity} from "../Redux/shoppingList";
+import {
+  setlists,
+  increaseQuantity,
+  decreaseQuantity,
+} from "../Redux/shoppingList";
 import { RootState } from "../../index";
 
 const Shopping: FC = () => {
@@ -12,17 +16,14 @@ const Shopping: FC = () => {
   const [isDone, setIsDone] = useState<boolean>(false);
   const inputRef = useRef<HTMLFormElement>(null);
 
-
   const listArr: any = useSelector<RootState>(
     (state) => state.shopping.shoppinglist
   );
- 
-
 
   const dispatch = useDispatch();
 
   const item = listArr.map((list: any) => list.list);
- 
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -30,8 +31,10 @@ const Shopping: FC = () => {
       // check if item already exists
       if (!item.includes(input)) {
         dispatch(
-          setlists([...listArr, { id: Date.now(), list: input, isDone: isDone, quantity:0 }])
-          
+          setlists([
+            ...listArr,
+            { id: Date.now(), list: input, isDone: isDone, quantity: 0 },
+          ])
         );
       } else {
         alert("item axists");
@@ -93,7 +96,6 @@ const Shopping: FC = () => {
                     >
                       -
                     </Button>
-              
                   </div>
                 </td>
               </tr>

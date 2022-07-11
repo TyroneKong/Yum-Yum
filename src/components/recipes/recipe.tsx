@@ -5,7 +5,6 @@ import { GreetContext } from "../../App";
 import { RecipeList } from "./recipeList";
 import "./recipe.scss";
 
-
 // passing in the greetingprops using the interface
 export const Recipe: FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -14,7 +13,6 @@ export const Recipe: FC = () => {
 
   const value = useContext(GreetContext);
   const [recipeData, setRecipeData] = useState<string | null>(null);
-
 
   const getRecipeList = async () => {
     try {
@@ -39,14 +37,19 @@ export const Recipe: FC = () => {
     formRef.current?.reset();
   };
 
-
-
   return (
     <div>
       <h1>Yum Yum</h1>
-     
+
       <form ref={formRef} onSubmit={fetchData}>
-        <input className="input" placeholder="search for recipe,,," onChange={(e)=>{value?.setInput(e.currentTarget.value)}} required></input>
+        <input
+          className="input"
+          placeholder="search for recipe,,,"
+          onChange={(e) => {
+            value?.setInput(e.currentTarget.value);
+          }}
+          required
+        ></input>
 
         <Button variant="contained" type="submit">
           Find Recipe
