@@ -61,8 +61,9 @@ const Shopping: FC = () => {
       <h2>
         You have{" "}
         {listArr.length === 0 || listArr.length > 1
-          ? listArr.length + " items"
+          ? listArr.length + " items "
           : listArr.length + " item"}
+          in your shopping list.
       </h2>
       <form ref={inputRef} onSubmit={handleSubmit}>
         <input

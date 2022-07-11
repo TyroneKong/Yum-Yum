@@ -30,6 +30,8 @@ export const shoppinglist = createSlice({
       const id = payload;
       state.shoppinglist.forEach((item: any) => {
         if (item.id === id) {
+          if(item.quantity >0)
+          
           item.quantity--;
         }
       });

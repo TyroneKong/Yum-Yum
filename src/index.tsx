@@ -6,14 +6,11 @@ import reportWebVitals from "./reportWebVitals";
 
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-
-import quantityReducer from "./components/Redux/quantity";
 import shoppinglist from "./components/Redux/shoppingList";
 
 // store to keep all reducers
 const store = configureStore({
   reducer: {
-    quantity: quantityReducer,
     shopping: shoppinglist,
   },
 });
