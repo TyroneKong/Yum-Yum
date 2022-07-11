@@ -15,14 +15,23 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-size: 12px;
   }
 
   &__img {
     width: 200px;
     height: 200px;
+    margin: 20px;
+    border-radius: 50%;
+    cursor: pointer;
 
     &:hover {
       transform: scale(1.1);
     }
+  }
+  &__video {
+    width: 200px;
+    height: 200px;
+    margin: 20px;
   }
 }

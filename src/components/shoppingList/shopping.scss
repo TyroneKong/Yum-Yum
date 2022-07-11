@@ -1,3 +1,11 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
 input {
   border-radius: 7px;
   min-width: 50%;
@@ -7,4 +15,20 @@ input {
 
 input::placeholder {
   font-size: 20px;
+}
+
+table {
+  border: 1px solid black;
+  width: 50%;
+  height: 300px;
+
+  & th {
+    font-size: 30px;
+    border: 1px solid black;
+  }
+
+  & td {
+    font-size: 25px;
+    border: 1px solid black;
+  }
 }

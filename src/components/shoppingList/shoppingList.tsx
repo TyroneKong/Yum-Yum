@@ -1,23 +1,31 @@
 import React, {FC} from "react";
 import ShoppingListCard from './shoppingListCard'
 import './shoppingList.scss'
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../index"
 
 
-interface Props {
-  lists:any;
-  setLists:any;
-}
+// interface Props {
+//   lists:any;
+//   setLists:any;
+// }
 
 
 
 
-const ShoppingList:FC<Props> = ({lists, setLists}) => {
-  console.log(lists)
+const ShoppingList:FC = () => {
+
+
+  const result:any = useSelector<RootState>(state=> state.shopping.shoppinglist)
+  console.log(result)
+
+
+
   return <div className="shoppingList">
-{lists.map((list:any, index:number)=>{
+{result.map((list:any, index:number)=>{
 return (
 
-<ShoppingListCard key={index} lists={lists} list={list} name={list.list} id={list.id} setLists={setLists} />
+<ShoppingListCard key={index} lists={result} list={list} name={list.list} id={list.id} />
 )
 })}
 

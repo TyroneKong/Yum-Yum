@@ -4,25 +4,37 @@ import { List } from "./listInterface";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { AiFillEdit } from "react-icons/ai";
 import { MdDone } from "react-icons/md";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../index"
+import { addlist, deletelist, setlists} from "../Redux/shoppingList";
+
+
 
 interface Props {
   lists: List[];
   name: string;
   list: List[];
   id: number;
-  setLists: any
+  // setLists: any
 
 }
 
-const ShoppingListCard: React.FC<Props> = ({ lists, name, id, setLists }) => {
+const ShoppingListCard: React.FC<Props> = ({ lists, name, id }) => {
   const [edit, setEdit] = useState(false);
   const [userInput, setUserInput] = useState<string>(name);
   const [done, setDone] = useState(false);
   const inputRef = useRef <HTMLInputElement> (null);
+console.log(name)
+
+const dispatch = useDispatch()
+
+const result:any = useSelector<RootState>(state => state.shopping.shoppinglist)
+
 
   const deleteList = (id: number) => {
-    const newList = lists.filter((list: any) => list.id !== id);
-    setLists(newList);
+    dispatch(deletelist(id))
+    console.log(id)
+  
   };
 
   const editList = () => {
@@ -40,11 +52,11 @@ const ShoppingListCard: React.FC<Props> = ({ lists, name, id, setLists }) => {
   const handleEdit = (e: React.FormEvent<HTMLFormElement>, id: number) => {
     e.preventDefault();
     inputRef.current?.focus()
-    setLists(
-      lists.map((list) =>
+    dispatch(setlists(
+      result.map((list:any) =>
         list.id === id ? { ...list, list: userInput } : list
       )
-    );
+    ));
     setEdit(false);
   };
 
