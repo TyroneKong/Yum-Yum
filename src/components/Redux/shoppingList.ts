@@ -11,9 +11,7 @@ export const shoppinglist = createSlice({
     setlists:(state, {payload})=>{
         state.shoppinglist = payload
     },
-    addlist:(state, {payload})=>{
-        state.shoppinglist.push(payload)
-    },
+  
     deletelist:(state, {payload})=>{
         const id = payload
         state.shoppinglist = state.shoppinglist.filter((item:any)=> item.id !== id )
@@ -23,7 +21,7 @@ export const shoppinglist = createSlice({
 
 
 
-export const {setlists, deletelist, addlist} = shoppinglist.actions
+export const {setlists, deletelist} = shoppinglist.actions
 
 export default shoppinglist.reducer
 

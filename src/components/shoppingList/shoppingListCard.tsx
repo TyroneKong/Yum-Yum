@@ -5,10 +5,8 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { AiFillEdit } from "react-icons/ai";
 import { MdDone } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../index"
-import { addlist, deletelist, setlists} from "../Redux/shoppingList";
-
-
+import { RootState } from "../../index";
+import { deletelist, setlists } from "../Redux/shoppingList";
 
 interface Props {
   lists: List[];
@@ -16,31 +14,25 @@ interface Props {
   list: List[];
   id: number;
   // setLists: any
-
 }
 
 const ShoppingListCard: React.FC<Props> = ({ lists, name, id }) => {
   const [edit, setEdit] = useState(false);
   const [userInput, setUserInput] = useState<string>(name);
   const [done, setDone] = useState(false);
-  const inputRef = useRef <HTMLInputElement> (null);
-console.log(name)
-
-const dispatch = useDispatch()
-
-const result:any = useSelector<RootState>(state => state.shopping.shoppinglist)
-
-
-  const deleteList = (id: number) => {
-    dispatch(deletelist(id))
-    console.log(id)
+  const inputRef = useRef<HTMLInputElement>(null);
   
-  };
 
-  const editList = () => {
-    setEdit(true);
-  };
+  const dispatch = useDispatch();
 
+
+  // shoppinglist state
+  const listArr: any = useSelector<RootState>(
+    (state) => state.shopping.shoppinglist
+  );
+
+
+  
   const setToDone = () => {
     !done ? setDone(true) : setDone(false);
     console.log("done");
@@ -51,19 +43,20 @@ const result:any = useSelector<RootState>(state => state.shopping.shoppinglist)
   //edit note
   const handleEdit = (e: React.FormEvent<HTMLFormElement>, id: number) => {
     e.preventDefault();
-    inputRef.current?.focus()
-    dispatch(setlists(
-      result.map((list:any) =>
-        list.id === id ? { ...list, list: userInput } : list
+    inputRef.current?.focus();
+    dispatch(
+      setlists(
+    listArr.map((list: any) =>
+          list.id === id ? { ...list, list: userInput } : list
+        )
       )
-    ));
+    );
     setEdit(false);
   };
 
   return (
     <div className="shoppingListCard">
-   
-      <form onSubmit={(e) => handleEdit(e, id)}  className="form">
+      <form onSubmit={(e) => handleEdit(e, id)} className="form">
         {edit ? (
           <input
             className="listInput"
@@ -85,12 +78,11 @@ const result:any = useSelector<RootState>(state => state.shopping.shoppinglist)
       </form>
 
       <div className="icons-container">
-        <span onClick={() => deleteList(id)} className="icon">
-        <RiDeleteBin6Line/>
+        <span onClick={() => dispatch(deletelist(id))} className="icon">
+          <RiDeleteBin6Line />
         </span>
 
-        <span onClick={editList} className="icon">
-         
+        <span onClick={()=>setEdit(true)} className="icon">
           <AiFillEdit />
         </span>
 
