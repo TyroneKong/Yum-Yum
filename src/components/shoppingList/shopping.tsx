@@ -1,5 +1,5 @@
 import React, { FC, useState, useRef, useEffect } from "react";
-import { Button } from "@mui/material";
+import { Button, listSubheaderClasses } from "@mui/material";
 import "./shopping.scss";
 import ShoppingList from "./shoppingList";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,6 +24,15 @@ const Shopping: FC = () => {
 
   const item = listArr.map((list: any) => list.list);
 
+
+  const quantities = listArr.map((item:any) => item.quantity)
+  const total = quantities.length>0 && quantities.reduce((ac:number,curr:number)=>{
+    return ac+ curr
+  })
+  console.log(total)
+
+
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -33,7 +42,7 @@ const Shopping: FC = () => {
         dispatch(
           setlists([
             ...listArr,
-            { id: Date.now(), list: input, isDone: isDone, quantity: 0 },
+            { id: Date.now(), list: input, isDone: isDone, quantity: 1 },
           ])
         );
       } else {
@@ -76,20 +85,26 @@ const Shopping: FC = () => {
             <tr>
               <th>Product</th>
               <th>Quantity</th>
+         
             </tr>
-
+          
             {listArr.map((item: any, idx: number) => (
               <tr key={idx}>
                 <td>{item.list}</td>
                 <td>
                   {item.quantity}
-                  <div className="btn__container">
+                 
+                </td>
+             <td>
+
+             <div className="btn__container">
                     <Button
                       variant="contained"
                       onClick={() => dispatch(increaseQuantity(item.id))}
                     >
                       +
                     </Button>
+                    
                     <Button
                       variant="contained"
                       onClick={() => dispatch(decreaseQuantity(item.id))}
@@ -97,12 +112,21 @@ const Shopping: FC = () => {
                       -
                     </Button>
                   </div>
-                </td>
+
+             </td>
               </tr>
             ))}
           </tbody>
         </table>
       )}
+      {listArr.length>0 &&
+      <table>
+        <tbody>
+          <tr><th>Total number of items</th></tr>
+        <tr><td>{total}</td></tr>
+        </tbody>
+      </table>
+}
     </div>
   );
 };
