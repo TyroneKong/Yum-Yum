@@ -29,7 +29,7 @@ const Shopping: FC = () => {
   const total = quantities.length>0 && quantities.reduce((ac:number,curr:number)=>{
     return ac+ curr
   })
-  console.log(total)
+
 
 
 
