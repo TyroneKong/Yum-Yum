@@ -8,7 +8,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../..";
 import { setrecipedata } from "../Redux/recipe";
 
-
 // passing in the greetingprops using the interface
 export const Recipe: FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -16,14 +15,13 @@ export const Recipe: FC = () => {
   // using the context
 
   const value = useContext(GreetContext);
-  // const [recipeData, setRecipeData] = useState<string | null>(null);
 
-const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-const recipedata:any = useSelector<RootState>((state)=> state.recipe.recipe)
-console.log(recipedata)
-
-
+  const recipedata: any = useSelector<RootState>(
+    (state) => state.recipe.recipe
+  );
+  console.log(recipedata);
 
   const getRecipeList = async () => {
     try {
