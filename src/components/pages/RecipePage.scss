@@ -1,0 +1,16 @@
+.recipePage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  &__video {
+    max-width: 50%;
+    margin-bottom: 20px;
+    border-radius: 12px;
+  }
+  &__img {
+    max-width: 50%;
+    border-radius: 50%;
+  }
+}

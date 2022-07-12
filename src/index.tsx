@@ -7,11 +7,12 @@ import reportWebVitals from "./reportWebVitals";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import shoppinglist from "./components/Redux/shoppingList";
-
+import recipeReducer from './components/Redux/recipe'
 // store to keep all reducers
 const store = configureStore({
   reducer: {
     shopping: shoppinglist,
+    recipe:recipeReducer
   },
 });
 

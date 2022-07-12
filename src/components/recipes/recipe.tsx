@@ -4,6 +4,10 @@ import { Button } from "@mui/material";
 import { GreetContext } from "../../App";
 import { RecipeList } from "./recipeList";
 import "./recipe.scss";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../..";
+import { setrecipedata } from "../Redux/recipe";
+
 
 // passing in the greetingprops using the interface
 export const Recipe: FC = () => {
@@ -12,7 +16,14 @@ export const Recipe: FC = () => {
   // using the context
 
   const value = useContext(GreetContext);
-  const [recipeData, setRecipeData] = useState<string | null>(null);
+  // const [recipeData, setRecipeData] = useState<string | null>(null);
+
+const dispatch = useDispatch()
+
+const recipedata:any = useSelector<RootState>((state)=> state.recipe.recipe)
+console.log(recipedata)
+
+
 
   const getRecipeList = async () => {
     try {
@@ -23,7 +34,7 @@ export const Recipe: FC = () => {
       const { results } = data;
 
       console.log(results);
-      setRecipeData(results);
+      dispatch(setrecipedata(results));
     } catch (error) {
       console.log(error);
     }
@@ -56,7 +67,7 @@ export const Recipe: FC = () => {
         </Button>
       </form>
 
-      <RecipeList recipedata={recipeData} />
+      <RecipeList recipedata={recipedata} />
     </div>
   );
 };

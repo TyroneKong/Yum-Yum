@@ -4,7 +4,7 @@ import { Recipe } from "./components/recipes/recipe";
 import Shopping from "./components/shoppingList/shopping";
 import Switch from "react-switch";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import RecipePage from "./components/pages/RecipePage.jsx";
+import RecipePage from './components/pages/RecipePage'
 
 export interface greetingProps {
   name: string;
