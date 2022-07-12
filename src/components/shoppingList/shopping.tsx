@@ -24,14 +24,12 @@ const Shopping: FC = () => {
 
   const item = listArr.map((list: any) => list.list);
 
-
-  const quantities = listArr.map((item:any) => item.quantity)
-  const total = quantities.length>0 && quantities.reduce((ac:number,curr:number)=>{
-    return ac+ curr
-  })
-
-
-
+  const quantities = listArr.map((item: any) => item.quantity);
+  const total =
+    quantities.length > 0 &&
+    quantities.reduce((ac: number, curr: number) => {
+      return ac + curr;
+    });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -63,7 +61,7 @@ const Shopping: FC = () => {
         {listArr.length === 0 || listArr.length > 1
           ? listArr.length + " items "
           : listArr.length + " item "}
-          in your shopping list.
+        in your shopping list.
       </h2>
       <form ref={inputRef} onSubmit={handleSubmit}>
         <input
@@ -84,28 +82,23 @@ const Shopping: FC = () => {
         <table>
           <tbody>
             <tr>
-              <th>Product  </th>
+              <th>Product</th>
               <th>Quantity</th>
-         
             </tr>
-          
+
             {listArr.map((item: any, idx: number) => (
               <tr key={idx}>
                 <td>{item.list}</td>
+                <td>{item.quantity}</td>
                 <td>
-                  {item.quantity}
-                 
-                </td>
-             <td>
-
-             <div className="btn__container">
+                  <div className="btn__container">
                     <Button
                       variant="contained"
                       onClick={() => dispatch(increaseQuantity(item.id))}
                     >
                       +
                     </Button>
-                    
+
                     <Button
                       variant="contained"
                       onClick={() => dispatch(decreaseQuantity(item.id))}
@@ -113,21 +106,24 @@ const Shopping: FC = () => {
                       -
                     </Button>
                   </div>
-
-             </td>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       )}
-      {listArr.length>0 &&
-      <table>
-        <tbody>
-          <tr><th>Total number of items</th></tr>
-        <tr><td>{total}</td></tr>
-        </tbody>
-      </table>
-}
+      {listArr.length > 0 && (
+        <table>
+          <tbody>
+            <tr>
+              <th>Total number of items</th>
+            </tr>
+            <tr>
+              <td>{total}</td>
+            </tr>
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };
