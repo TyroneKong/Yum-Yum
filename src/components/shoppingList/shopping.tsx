@@ -62,7 +62,7 @@ const Shopping: FC = () => {
         You have{" "}
         {listArr.length === 0 || listArr.length > 1
           ? listArr.length + " items "
-          : listArr.length + " item"}
+          : listArr.length + " item "}
           in your shopping list.
       </h2>
       <form ref={inputRef} onSubmit={handleSubmit}>
@@ -84,7 +84,7 @@ const Shopping: FC = () => {
         <table>
           <tbody>
             <tr>
-              <th>Product</th>
+              <th>Product  </th>
               <th>Quantity</th>
          
             </tr>

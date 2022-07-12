@@ -18,15 +18,18 @@ export const RecipeCard: FC<cardProps> = ({ img, data, videoData }) => {
 
       <div className="card__name">
         <h2 className="card__description">
-        <h2 className="card__title">   <span>{data.name}</span></h2>
-          <br /> {data?.description || "no description available"}
+        <span>{data.name}</span>
+
         </h2>
+          <h2>{data?.description || "no description available"}
+        </h2>
+
       </div>
-{videoData !== null &&
+{/* {videoData !== null &&
 
       <video className="card__video" controls>
         <source src={videoData} type="video/mp4" />
-      </video> }
+      </video> } */}
     </div>
   );
 };

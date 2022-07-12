@@ -55,6 +55,7 @@ export const Recipe: FC = () => {
           Find Recipe
         </Button>
       </form>
+
       <RecipeList recipedata={recipeData} />
     </div>
   );
