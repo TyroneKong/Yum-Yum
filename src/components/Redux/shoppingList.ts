@@ -30,12 +30,13 @@ export const shoppinglist = createSlice({
       const id = payload;
       state.shoppinglist.forEach((item: any) => {
         if (item.id === id) {
-          if(item.quantity >0){
-          
-          item.quantity--;
-
-          }if (item.quantity === 0){
-              state.shoppinglist = state.shoppinglist.filter((item:any)=> item.id !== id)  
+          if (item.quantity > 0) {
+            item.quantity--;
+          }
+          if (item.quantity === 0) {
+            state.shoppinglist = state.shoppinglist.filter(
+              (item: any) => item.id !== id
+            );
           }
         }
       });

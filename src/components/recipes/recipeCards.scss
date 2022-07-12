@@ -2,12 +2,12 @@
 
 .card {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   box-shadow: rgba(0, 0, 0, 0.75) 0rem 0.3125rem 0.9375rem;
   width: 100%;
   &__name {
-    width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
   }
   @include responsive(mobile) {
@@ -31,7 +31,17 @@
   }
   &__video {
     width: 200px;
-    height: 200px;
     margin: 20px;
+    border-radius: 12px;
+    @include responsive(mobile) {
+      width: 80%;
+    }
   }
+  &__description {
+  }
+}
+
+h2 > span {
+  font-size: 30px;
+  text-decoration: underline;
 }
