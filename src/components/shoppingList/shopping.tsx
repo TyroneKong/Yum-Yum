@@ -1,5 +1,5 @@
 import React, { FC, useState, useRef, useEffect } from "react";
-import { Button, listSubheaderClasses } from "@mui/material";
+import { Button} from "@mui/material";
 import "./shopping.scss";
 import ShoppingList from "./shoppingList";
 import { useDispatch, useSelector } from "react-redux";

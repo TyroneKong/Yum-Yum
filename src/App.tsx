@@ -1,4 +1,4 @@
-import React, { FC, useState, createContext, useEffect } from "react";
+import React, { FC, useState, createContext} from "react";
 import "./App.css";
 import { Recipe } from "./components/recipes/recipe";
 import Shopping from "./components/shoppingList/shopping";
